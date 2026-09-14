@@ -1,0 +1,141 @@
+{
+    "app-id": "com.p1security.diagng",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "50",
+    "sdk": "org.gnome.Sdk",
+    "command": "diagng",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.rust-stable",
+        "org.freedesktop.Sdk.Extension.llvm22"
+    ],
+    "finish-args": [
+        "--share=ipc",
+        "--share=network",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=all",
+        "--filesystem=~/.local/lib/wireshark/plugins:create",
+        "--talk-name=org.freedesktop.Flatpak",
+        "--system-talk-name=com.p1security.diagmond",
+        "--system-talk-name=org.freedesktop.ModemManager1"
+    ],
+    "build-options": {
+        "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm22/bin",
+        "prepend-ld-library-path": "/usr/lib/sdk/llvm22/lib",
+        "env" : {
+            "CARGO_HOME" : "/run/build/diagng/.cargo"
+        }
+    },
+    "modules": [
+        {
+            "name": "libmm-glib",
+            "buildsystem": "meson",
+            "builddir": true,
+            "config-opts": [
+                "--libdir=/app/lib",
+                "--buildtype=release",
+                "-Dudev=false",
+                "-Dmbim=false",
+                "-Dqmi=false",
+                "-Dudevdir=/app/",
+                "-Dbash_completion=false",
+                "-Dman=false",
+                "-Dsystemd_suspend_resume=false",
+                "-Dpowerd_suspend_resume=false",
+                "-Dsystemd_journal=false",
+                "-Dsystemdsystemunitdir=no",
+                "-Dpolkit=no",
+                "-Dqrtr=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.24.2/ModemManager-1.24.2.tar.gz",
+                    "sha256": "fbc75adcc0d7b0565f256e7ff4e8872b0a37c4413ff576665f7470932d9c1b68"
+                }
+            ]
+        },
+        {
+            "name": "python3-crcmod",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"crcmod>=1.7\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/6b/b0/e595ce2a2527e169c3bcd6c33d2473c1918e0b7f6826a043ca1245dd4e5b/crcmod-1.7.tar.gz",
+                    "sha256": "dc7051a0db5f2bd48665a990d3ec1cc305a466a77358ca4492826f41f283601e"
+                }
+            ]
+        },
+        {
+            "name": "python3-kaitaistruct",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"kaitaistruct>=0.11\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/4a/4a/cf14bf3b1f5ffb13c69cf5f0ea78031247790558ee88984a8bdd22fae60d/kaitaistruct-0.11-py2.py3-none-any.whl",
+                    "sha256": "5c6ce79177b4e193a577ecd359e26516d1d6d000a0bffd6e1010f2a46a62a561"
+                }
+            ]
+        },
+        {
+            "name": "python3-pyudev",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pyudev>=0.24.4\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/2a/51/3dc0cd6498b24dea3cdeaed648568e3ca7454d41334d840b114156d7479f/pyudev-0.24.4-py3-none-any.whl",
+                    "sha256": "b3b6b01c68e6fc628428cc45ff3fe6c277afbb5d96507f14473ddb4a6b959e00"
+                }
+            ]
+        },
+        {
+            "name": "diagmond",
+            "buildsystem": "simple",
+            "subdir": "diagmond",
+            "build-commands": [
+                "cargo --offline fetch --verbose",
+                "cargo --offline build --release --verbose",
+                "install -Dm755 ./target/release/diagmond-bin -t /app/bin/",
+                "cp -r ./share/dbus-1 /app/share/",
+                "cp -r ./share/polkit-1 /app/share/"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/P1sec/DiagNG",
+                    "commit": "fdd580503842d20bfe00720e006bbda13e1fe270"
+                }
+            ]
+        },
+        {
+            "name": "diagng",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/bin/",
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \".\" --no-build-isolation",
+                "install -Dm644 ./src/diagng/ui/assets/share/icons/hicolor/scalable/apps/com.p1security.diagng.svg -t /app/share/icons/hicolor/scalable/apps/",
+                "install -Dm644 ./src/diagng/ui/assets/share/metainfo/com.p1security.diagng.metainfo.xml -t /app/share/metainfo/",
+                "install -Dm644 ./src/diagng/ui/assets/share/applications/com.p1security.diagng.desktop -t /app/share/applications/",
+                "install -Dm644 ./src/diagng/ui/assets/share/dbus-1/interfaces/com.p1security.diagmetad.xml -t /app/share/dbus-1/interfaces/",
+                "install -Dm644 ./src/diagng/ui/assets/share/dbus-1/services/com.p1security.diagmetad.service -t /app/share/dbus-1/services/",
+                "rm -rf diagmond src struct docs *.g* packaging tests *.md *.lock *.yaml LICENSE"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/P1sec/DiagNG",
+                    "commit": "fdd580503842d20bfe00720e006bbda13e1fe270"
+                }
+            ]
+        }
+    ]
+}
