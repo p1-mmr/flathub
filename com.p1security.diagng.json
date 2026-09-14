@@ -100,7 +100,6 @@
         {
             "name": "diagmond",
             "buildsystem": "simple",
-            "subdir": "diagmond",
             "build-commands": [
                 "cargo --offline fetch --verbose",
                 "cargo --offline build --release --verbose",
@@ -110,9 +109,9 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/P1sec/DiagNG",
-                    "commit": "fdd580503842d20bfe00720e006bbda13e1fe270"
+                    "type": "archive",
+                    "url": "https://github.com/P1sec/DiagNG/releases/download/0.0.1/diagmond_tarball_0.0.1_for_flathub_build.tar.gz",
+                    "sha256": "a061909a0278c1f5ca658c2c23fe129339617950515f5e2f7a4d07e561a5d5e7"
                 }
             ]
         },
@@ -133,7 +132,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/P1sec/DiagNG",
-                    "commit": "fdd580503842d20bfe00720e006bbda13e1fe270"
+                    "commit": "624ed9e826a57d5f7ace560ab06eaef2911d1dd3"
                 }
             ]
         }
