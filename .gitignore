@@ -1,0 +1,5 @@
+# The following is related to building packages
+vendor/
+repo/
+.flatpak-builder/
+*.flatpak
