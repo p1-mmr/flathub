@@ -1,7 +1,7 @@
 {
     "app-id": "com.p1security.diagng",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "50",
+    "runtime-version": "51",
     "sdk": "org.gnome.Sdk",
     "command": "diagng",
     "sdk-extensions" : [
@@ -110,8 +110,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/P1sec/DiagNG/releases/download/0.0.1/diagmond_tarball_0.0.1_for_flathub_build.tar.gz",
-                    "sha256": "a63d9270517130ac8639a23151dbb956e9969b939e193feac010088616f0f4fb"
+                    "url": "https://github.com/P1sec/DiagNG/releases/download/0.1.0/diagmond_tarball_0.1.0_for_flathub_build.tar.gz",
+                    "sha256": "ca460992fa40e1e4464ff26a6b083401e14232ee0ffe6d34425094885b63be91"
                 }
             ]
         },
@@ -132,7 +132,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/P1sec/DiagNG",
-                    "commit": "9d024aabbd64bf37d7e85a8ffcdd1e266faa394e"
+                    "commit": "c72d17ce3cfca06fe5c0c72cf49157c7ca7fe4a7"
                 }
             ]
         }
