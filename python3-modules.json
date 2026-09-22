@@ -34,7 +34,8 @@
                     "sha256": "5c6ce79177b4e193a577ecd359e26516d1d6d000a0bffd6e1010f2a46a62a561",
                     "x-checker-data": {
                         "type": "pypi",
-                        "name": "kaitaistruct"
+                        "name": "kaitaistruct",
+                        "packagetype": "bdist_wheel"
                     }
                 }
             ]
@@ -52,7 +53,8 @@
                     "sha256": "b3b6b01c68e6fc628428cc45ff3fe6c277afbb5d96507f14473ddb4a6b959e00",
                     "x-checker-data": {
                         "type": "pypi",
-                        "name": "pyudev"
+                        "name": "pyudev",
+                        "packagetype": "bdist_wheel"
                     }
                 }
             ]
