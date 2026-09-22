@@ -13,7 +13,11 @@
                 {
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/6b/b0/e595ce2a2527e169c3bcd6c33d2473c1918e0b7f6826a043ca1245dd4e5b/crcmod-1.7.tar.gz",
-                    "sha256": "dc7051a0db5f2bd48665a990d3ec1cc305a466a77358ca4492826f41f283601e"
+                    "sha256": "dc7051a0db5f2bd48665a990d3ec1cc305a466a77358ca4492826f41f283601e",
+                    "x-checker-data": {
+                        "type": "pypi",
+                        "name": "crcmod"
+                    }
                 }
             ]
         },
@@ -27,7 +31,11 @@
                 {
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/4a/4a/cf14bf3b1f5ffb13c69cf5f0ea78031247790558ee88984a8bdd22fae60d/kaitaistruct-0.11-py2.py3-none-any.whl",
-                    "sha256": "5c6ce79177b4e193a577ecd359e26516d1d6d000a0bffd6e1010f2a46a62a561"
+                    "sha256": "5c6ce79177b4e193a577ecd359e26516d1d6d000a0bffd6e1010f2a46a62a561",
+                    "x-checker-data": {
+                        "type": "pypi",
+                        "name": "kaitaistruct"
+                    }
                 }
             ]
         },
@@ -41,7 +49,11 @@
                 {
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/2a/51/3dc0cd6498b24dea3cdeaed648568e3ca7454d41334d840b114156d7479f/pyudev-0.24.4-py3-none-any.whl",
-                    "sha256": "b3b6b01c68e6fc628428cc45ff3fe6c277afbb5d96507f14473ddb4a6b959e00"
+                    "sha256": "b3b6b01c68e6fc628428cc45ff3fe6c277afbb5d96507f14473ddb4a6b959e00",
+                    "x-checker-data": {
+                        "type": "pypi",
+                        "name": "pyudev"
+                    }
                 }
             ]
         }

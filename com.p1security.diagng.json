@@ -84,9 +84,14 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.24.2/ModemManager-1.24.2.tar.gz",
-                    "sha256": "fbc75adcc0d7b0565f256e7ff4e8872b0a37c4413ff576665f7470932d9c1b68"
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/mobile-broadband/ModemManager.git",
+                    "tag": "1.24.2",
+                    "commit": "f2b9ab1ad78d322f32134a444b5b54c6e8160e19",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
                 }
             ]
         },
@@ -105,7 +110,13 @@
                 {
                     "type": "archive",
                     "url": "https://github.com/P1sec/DiagNG/releases/download/0.1.0/diagmond_tarball_0.1.0_for_flathub_build.tar.gz",
-                    "sha256": "ca460992fa40e1e4464ff26a6b083401e14232ee0ffe6d34425094885b63be91"
+                    "sha256": "ca460992fa40e1e4464ff26a6b083401e14232ee0ffe6d34425094885b63be91",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/P1sec/DiagNG/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": ".assets[] | select(.name==\"diagmond_tarball_\" + $version + \"_for_flathub_build.tar.gz\") | .browser_download_url"
+                    }
                 }
             ]
         },
@@ -126,7 +137,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/P1sec/DiagNG",
-                    "commit": "c72d17ce3cfca06fe5c0c72cf49157c7ca7fe4a7"
+                    "tag": "0.1.0",
+                    "commit": "c72d17ce3cfca06fe5c0c72cf49157c7ca7fe4a7",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
                 }
             ]
         }
